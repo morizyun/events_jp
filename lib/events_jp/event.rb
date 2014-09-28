@@ -2,11 +2,11 @@ module EventsJp
   module Event
     class InvalidException < Exception; end
 
-    def get_events(keyword: nil, curator_limit: nil)
+    def get_events(keyword: nil, service_limit: nil)
       obj = [EventsJp::Atnd, EventsJp::Connpass, EventsJp::Doorkeeper, EventsJp::Zusaar]
-      obj.map do |curator|
-        next if curator == EventsJp::Doorkeeper and keyword
-        curator.get_events(keyword: keyword, limit: curator_limit)
+      obj.map do |service|
+        next if service == EventsJp::Doorkeeper && keyword
+        service.get_events(keyword: keyword, limit: service_limit)
       end.flatten
     end
   end

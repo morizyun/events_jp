@@ -2,7 +2,6 @@ module EventsJp
   class Connpass < EventsJp::EventObject
     ENDPOINT = 'http://connpass.com/api/v1/event/'.freeze
     DEFAULT_OPT = {order: 2, count: 100}.freeze
-    WAIT_SEC = 2
 
     class << self
       def get_events(keyword: nil, limit: nil)
@@ -12,7 +11,7 @@ module EventsJp
           tmp = convert_response(get(ENDPOINT, opt))
           res += tmp
           break if finish_get?(res, tmp, limit)
-          sleep(WAIT_SEC)
+          sleep(1)
         end
         res.uniq.flatten
       end

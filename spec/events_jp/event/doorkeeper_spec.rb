@@ -21,12 +21,12 @@ describe 'EventsJp::Doorkeeper' do
 
     it 'returns doorkeeper API results' do
       expect(@res.count).to eq(50)
-      expect(@res.first.curator).to eq('doorkeeper')
+      expect(@res.first.service).to eq('doorkeeper')
       expect(@res.first.catch).to be_nil
       expect(@res.first.title).to eq('大切な人の未来へ贈る　タイムカプセルレター(2017年に再会！アースデイ東京2014企画プロジェクト版)')
       expect(@res.first.event_url).to eq('http://asobiba.doorkeeper.jp/events/10448')
-      expect(@res.first.started_at).to eq('2017-04-30T00:00:00.000Z')
-      expect(@res.first.ended_at).to eq('2017-04-30T01:00:00.000Z')
+      expect(@res.first.started_at).to eq(DateTime.parse('2017-04-30T00:00:00.000Z'))
+      expect(@res.first.ended_at).to eq(DateTime.parse('2017-04-30T01:00:00.000Z'))
       expect(@res.first.address).to be_nil
       expect(@res.first.place).to be_nil
       expect(@res.first.lat).to be_nil

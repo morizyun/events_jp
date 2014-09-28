@@ -33,12 +33,12 @@ describe 'EventsJp::Zusaar' do
 
       it 'returns zusaar API results' do
         expect(@res.count).to eq(200)
-        expect(@res.first.curator).to eq('zusaar')
+        expect(@res.first.service).to eq('zusaar')
         expect(@res.first.title).to eq('イスラム＆ハラル市場進出支援セミナー')
         expect(@res.first.catch).to eq('〜本当は教えたくない東南アジア”イスラム市場”のビジネスチャンス〜')
         expect(@res.first.event_url).to eq('http://www.zusaar.com/event/7667004')
-        expect(@res.first.started_at).to eq('2014-10-11T13:30:00+09:00')
-        expect(@res.first.ended_at).to eq('2014-10-11T15:30:00+09:00')
+        expect(@res.first.started_at).to eq(DateTime.parse('2014-10-11T13:30:00+09:00'))
+        expect(@res.first.ended_at).to eq(DateTime.parse('2014-10-11T15:30:00+09:00'))
         expect(@res.first.address).to eq('東京都千代田区神田鍛冶町3-2-2')
         expect(@res.first.place).to eq('エッサム神田ホール')
         expect(@res.first.lat).to eq(35.6934894)

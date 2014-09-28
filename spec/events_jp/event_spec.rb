@@ -5,7 +5,7 @@ describe 'EventsJp::Event' do
   describe '.get_all' do
     context 'with keyword' do
       before(:each) do
-        @result = EventsJp.get_events(keyword: 'Ruby',  curator_limit: 100)
+        @result = EventsJp.get_events(keyword: 'Ruby',  service_limit: 100)
       end
 
       it 'return each 100 events' do
@@ -15,7 +15,7 @@ describe 'EventsJp::Event' do
 
     context 'no keyword' do
       before(:each) do
-        @result = EventsJp.get_events(curator_limit: 100)
+        @result = EventsJp.get_events(service_limit: 100)
       end
 
       it 'return each 100 events' do

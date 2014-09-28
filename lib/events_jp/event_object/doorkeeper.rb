@@ -2,7 +2,6 @@ module EventsJp
   class Doorkeeper < EventsJp::EventObject
     ENDPOINT = 'http://api.doorkeeper.jp/events'.freeze
     DEFAULT_OPT = {locale: 'ja', sort: 'starts_at'}.freeze
-    WAIT_SEC = 2
 
     class << self
       def get_events(keyword: nil, limit: nil)
@@ -12,7 +11,7 @@ module EventsJp
           tmp = convert_response(get(ENDPOINT, opt))
           res += tmp
           break if finish_get?(res, tmp, limit)
-          sleep(WAIT_SEC)
+          sleep(1)
         end
         res.uniq.flatten
       end
@@ -32,16 +31,16 @@ module EventsJp
 
       def to_basic_hash(h)
         Hashie::Mash.new({
-             curator:     class_name,
+             service:     service_name,
              address:     h[:address],
              title:       h[:title],
              catch:       nil,
              event_url:   h[:public_url],
-             started_at:  h[:starts_at],
-             ended_at:    h[:ends_at],
+             started_at:  parse_datetime(h[:starts_at]),
+             ended_at:    parse_datetime(h[:ends_at]),
              place:       h[:venue_name],
-             lon:         h[:long],
-             lat:         h[:lat],
+             lon:         h[:long] ? h[:long].to_f : nil,
+             lat:         h[:lat] ? h[:lat].to_f : nil,
              limit:       h[:ticket_limit],
              accepted:    h[:participants],
              waiting:     h[:waitlisted]

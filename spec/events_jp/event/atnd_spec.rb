@@ -33,16 +33,16 @@ describe 'EventsJp::Atnd' do
 
       it 'returns conpass API results' do
         expect(@res.count).to eq(200)
-        expect(@res.first.curator).to eq('atnd')
+        expect(@res.first.service).to eq('atnd')
         expect(@res.first.title).to eq('[テスト] qkstudy #01')
         expect(@res.first.catch).to eq('人は働くために、休みが必要である。')
         expect(@res.first.event_url).to eq('http://atnd.org/events/17662')
-        expect(@res.first.started_at).to eq('2112-08-20T19:00:00.000+09:00')
-        expect(@res.first.ended_at).to eq('2112-08-20T21:30:00.000+09:00')
+        expect(@res.first.started_at).to eq(DateTime.parse('2112-08-20T19:00:00.000+09:00'))
+        expect(@res.first.ended_at).to eq(DateTime.parse('2112-08-20T21:30:00.000+09:00'))
         expect(@res.first.address).to eq('東京都千代田区丸の内3丁目5番1号')
         expect(@res.first.place).to eq('東京国際フォーラム　ホールB7')
-        expect(@res.first.lat).to eq('35.6769467')
-        expect(@res.first.lon).to eq('139.7635034')
+        expect(@res.first.lat).to eq(35.6769467)
+        expect(@res.first.lon).to eq(139.7635034)
         expect(@res.first.limit).to be_nil
         expect(@res.first.accepted).to eq(5)
         expect(@res.first.waiting).to eq(0)

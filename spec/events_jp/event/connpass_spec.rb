@@ -33,12 +33,12 @@ describe 'EventsJp::Conpass' do
 
       it 'returns conpass API results' do
         expect(@res.count).to be >= 199
-        expect(@res.first.curator).to eq('connpass')
+        expect(@res.first.service).to eq('connpass')
         expect(@res.first.title).to eq('キイロイトリ勉強会')
         expect(@res.first.catch).to eq('キイロイトリの魅力を勉強してください')
         expect(@res.first.event_url).to eq('http://connpass.com/event/14/')
-        expect(@res.first.started_at).to eq('2038-01-18T03:13:10+09:00')
-        expect(@res.first.ended_at).to eq('2038-01-18T03:14:10+09:00')
+        expect(@res.first.started_at).to eq(DateTime.parse('2038-01-18T03:13:10+09:00'))
+        expect(@res.first.ended_at).to eq(DateTime.parse('2038-01-18T03:14:10+09:00'))
         expect(@res.first.address).to eq('東京')
         expect(@res.first.place).to eq('どこか')
         expect(@res.first.lat).to eq(35.6894875)

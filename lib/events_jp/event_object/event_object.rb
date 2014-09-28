@@ -4,7 +4,7 @@ module EventsJp
     extend EventsJp::Connection
 
     class << self
-      def class_name
+      def service_name
         self.name.to_s.downcase.gsub(/^(.*::)/, '')
       end
 
@@ -22,20 +22,24 @@ module EventsJp
 
       def to_basic_hash(h)
         Hashie::Mash.new({
-            curator:     class_name,
+            service:     service_name,
             address:     h[:address],
             catch:       h[:catch],
             title:       h[:title],
             event_url:   h[:event_url],
-            started_at:  h[:started_at],
-            ended_at:    h[:ended_at],
+            started_at:  parse_datetime(h[:started_at]),
+            ended_at:    parse_datetime(h[:ended_at]),
             place:       h[:place],
-            lon:         h[:lon],
-            lat:         h[:lat],
+            lon:         h[:lon].to_f,
+            lat:         h[:lat].to_f,
             limit:       h[:limit],
             accepted:    h[:accepted],
             waiting:     h[:waiting]
         })
+      end
+
+      def parse_datetime(dt)
+        dt ? DateTime.parse(dt) : nil
       end
     end
   end

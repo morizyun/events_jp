@@ -21,11 +21,9 @@ Or install it yourself as:
 ### Search events
 
 ```ruby
-res = EventsJp.get_event(keyword: 'Python')
-res.each do |key, events|
-  events.each do |e|
-    puts "#{key} - #{e.title}"
-  end
+res = EventsJp.get_event(keyword: 'Ruby')
+events.each do |e|
+  puts "#{e.service} - #{e.title}"
 end
 ```
 
@@ -34,18 +32,33 @@ end
 ### Get all events
 
 ```ruby
-res = EventsJp.get_event(curator_limit: 100)
-res.each do |key, events|
-  events.each do |e|
-    puts "#{key} - #{e.title}"
-  end
+res = EventsJp.get_event(service_limit: 100)
+events.each do |e|
+  puts "#{e.service} - #{e.title}"
 end
 ```
 
 ### Complement
 
 * The response is a [Hashie::Mash](https://github.com/intridea/hashie#mash) object (dot-accessible Hash).
-* You can use the same query parameters on the official API reference.
+    
+## Response Attributes
+    
+The response is as follows(similar atnd response);
+    
+- service: String(atnd/connpass/doorkeeper/zusaar)
+- address: String
+- catch: String(nothing in doorkeeper)
+- title: String
+- event_url: String
+- started_at: DateTime
+- ended_at: DateTime
+- place: String
+- lon: Float(longitude)
+- lat: Float(latitude)
+- limit: Integer
+- accepted: Integer
+- waiting: Integer
 
 ## API reference
 
