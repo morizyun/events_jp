@@ -28,11 +28,11 @@ describe 'EventsJp::Zusaar' do
 
     context 'no keyword' do
       before(:each) do
-        @res = EventsJp::Zusaar.get_events(limit: 200)
+        @res = EventsJp::Zusaar.get_events(limit: 100)
       end
 
       it 'returns zusaar API results' do
-        expect(@res.count).to eq(200)
+        expect(@res.count).to eq(100)
         expect(@res.first.service).to eq('zusaar')
         expect(@res.first.title).to eq('イスラム＆ハラル市場進出支援セミナー')
         expect(@res.first.catch).to eq('〜本当は教えたくない東南アジア”イスラム市場”のビジネスチャンス〜')

@@ -16,11 +16,11 @@ describe 'EventsJp::Doorkeeper' do
 
   describe '.get_events' do
     before(:each) do
-      @res = EventsJp::Doorkeeper.get_events(limit: 50)
+      @res = EventsJp::Doorkeeper.get_events(limit: 25)
     end
 
     it 'returns doorkeeper API results' do
-      expect(@res.count).to eq(50)
+      expect(@res.count).to eq(25)
       expect(@res.first.service).to eq('doorkeeper')
       expect(@res.first.catch).to be_nil
       expect(@res.first.title).to eq('大切な人の未来へ贈る　タイムカプセルレター(2017年に再会！アースデイ東京2014企画プロジェクト版)')

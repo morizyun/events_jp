@@ -33,5 +33,6 @@ RSpec.configure do |config|
    stub_get("#{EventsJp::Doorkeeper::ENDPOINT}?locale=ja&sort=starts_at&page=1", 'event/doorkeeper.json')
    stub_get("#{EventsJp::Zusaar::ENDPOINT}?count=100&start=1", 'event/zusaar.json')
    stub_get("#{EventsJp::Zusaar::ENDPOINT}?count=100&start=1&keyword=Ruby", 'event/zusaar_ruby.json')
+   stub_get("#{EventsJp::Zusaar::ENDPOINT}?count=100&start=1&keyword=Ruby", 'event/zusaar_ruby.json')
   end
 end

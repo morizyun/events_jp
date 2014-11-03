@@ -28,11 +28,11 @@ describe 'EventsJp::Atnd' do
 
     context 'no keyword' do
       before(:each) do
-        @res = EventsJp::Atnd.get_events(limit: 200)
+        @res = EventsJp::Atnd.get_events(limit: 100)
       end
 
       it 'returns conpass API results' do
-        expect(@res.count).to eq(200)
+        expect(@res.count).to eq(100)
         expect(@res.first.service).to eq('atnd')
         expect(@res.first.title).to eq('[テスト] qkstudy #01')
         expect(@res.first.catch).to eq('人は働くために、休みが必要である。')

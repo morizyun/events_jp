@@ -28,11 +28,11 @@ describe 'EventsJp::Conpass' do
 
     context 'no keyword' do
       before(:each) do
-        @res = EventsJp::Connpass.get_events(limit: 200)
+        @res = EventsJp::Connpass.get_events(limit: 100)
       end
 
       it 'returns conpass API results' do
-        expect(@res.count).to be >= 199
+        expect(@res.count).to eq(100)
         expect(@res.first.service).to eq('connpass')
         expect(@res.first.title).to eq('キイロイトリ勉強会')
         expect(@res.first.catch).to eq('キイロイトリの魅力を勉強してください')
