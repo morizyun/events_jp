@@ -11,6 +11,10 @@ describe 'EventsJp::Event' do
       it 'return each more than 10 events' do
         expect(@result.count).to be > 40
       end
+
+      it "doesn't have nil" do
+        expect(@result.any?{|e| e.nil? }).to be_falsy
+      end
     end
 
     context 'no keyword' do
