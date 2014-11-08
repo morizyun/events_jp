@@ -21,7 +21,7 @@ Or install it yourself as:
 ### Search events
 
 ```ruby
-res = EventsJp.get_event(keyword: 'Ruby')
+events = EventsJp.get_events(keyword: 'Ruby')
 events.each do |e|
   puts "#{e.service} - #{e.title}"
 end
@@ -32,7 +32,7 @@ end
 ### Get all events
 
 ```ruby
-res = EventsJp.get_event(service_limit: 100)
+events = EventsJp.get_events(service_limit: 100)
 events.each do |e|
   puts "#{e.service} - #{e.title}"
 end
