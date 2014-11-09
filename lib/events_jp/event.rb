@@ -7,7 +7,7 @@ module EventsJp
       obj.map do |service|
         next if service == EventsJp::Doorkeeper && keyword
         service.get_events(keyword: keyword, limit: service_limit)
-      end.flatten
+      end.flatten.compact
     end
   end
 end
