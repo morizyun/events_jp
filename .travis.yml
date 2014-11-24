@@ -3,6 +3,8 @@ rvm:
   - 2.1.3
   - 2.1.0
   - 2.0.0
-env:
-  global:
-    secure:
+bundler_args: --jobs=2
+script:  bundle exec rspec
+branches:
+  only:
+    - master
