@@ -8,3 +8,7 @@ script:  bundle exec rspec
 branches:
   only:
     - master
+addons:
+  code_climate:
+    repo_token:
+      secure: "HscYJPD+S3/IH8H4x1pZ1zAWnyLwYgpLrcFmfYwi6/flWTuVYM5WaoadmPy3ALqUF0+wc2ka3k/e3jhJcN5Nb9r12rK4iceWoGSNlJSIZaJRUgvHR1QD1rWMnTu5ENF985Rr6BMosPlhXQGYXXHbNP3rICJoxVZspATeuKy7BXU="
