@@ -1,18 +1,15 @@
-if ENV['CI']
-  require 'coveralls'
-  require 'codeclimate-test-reporter'
-  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-    Coveralls::SimpleCov::Formatter,
-    CodeClimate::TestReporter::Formatter
-  ]
-  SimpleCov.start 'test_frameworks'
-end
+require 'coveralls'
+Coveralls.wear!
+require 'codeclimate-test-reporter'
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  Coveralls::SimpleCov::Formatter,
+  CodeClimate::TestReporter::Formatter
+]
+SimpleCov.start 'test_frameworks'
 
 require 'events_jp'
 require 'rspec'
 require 'fakeweb'
-require 'coveralls'
-Coveralls.wear!
 
 def fixture(path)
   File.read("#{File.dirname(__FILE__)}/fixtures/#{path}")
