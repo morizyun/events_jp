@@ -1,4 +1,4 @@
-if ENV['CI'] && RUBY_VERSION.start_with?('2.1')
+if ENV['CI']
   require 'coveralls'
   require 'codeclimate-test-reporter'
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
@@ -11,6 +11,8 @@ end
 require 'events_jp'
 require 'rspec'
 require 'fakeweb'
+require 'coveralls'
+Coveralls.wear!
 
 def fixture(path)
   File.read("#{File.dirname(__FILE__)}/fixtures/#{path}")
