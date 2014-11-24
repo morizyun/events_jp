@@ -1,11 +1,13 @@
-if ENV['CI'] && RUBY_VERSION.start_with?('2.1')
+if ENV['CI']
   require 'coveralls'
+  Coveralls.wear!
   require 'codeclimate-test-reporter'
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
     Coveralls::SimpleCov::Formatter,
     CodeClimate::TestReporter::Formatter
   ]
   SimpleCov.start 'test_frameworks'
+  CodeClimate::TestReporter.start
 end
 
 require 'events_jp'

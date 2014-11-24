@@ -1,4 +1,4 @@
-# events_jp
+# events_jp [![Gem Version](https://badge.fury.io/rb/events_jp.svg)](http://badge.fury.io/rb/events_jp) [![Build Status](https://travis-ci.org/morizyun/events_jp.svg)](https://travis-ci.org/morizyun/events_jp) [![Code Climate](https://codeclimate.com/github/morizyun/events_jp/badges/gpa.svg)](https://codeclimate.com/github/morizyun/events_jp) [![Test Coverage](https://codeclimate.com/github/morizyun/events_jp/badges/coverage.svg)](https://codeclimate.com/github/morizyun/events_jp) [![Dependency Status](https://gemnasium.com/morizyun/events_jp.svg)](https://gemnasium.com/morizyun/events_jp) 
 
 A Ruby wrapper for atnd/connpass/doorkeeper/zusaar API
 
@@ -78,3 +78,5 @@ The response is as follows(similar atnd response);
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/morizyun/events_jp/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
