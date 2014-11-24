@@ -1,4 +1,4 @@
-# events_jp
+# events_jp [![Build Status](https://travis-ci.org/morizyun/events_jp.svg)](https://travis-ci.org/morizyun/events_jp)
 
 A Ruby wrapper for atnd/connpass/doorkeeper/zusaar API
 
