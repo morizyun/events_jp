@@ -1,4 +1,4 @@
-# events_jp [![Gem Version](https://badge.fury.io/rb/events_jp.svg)](http://badge.fury.io/rb/events_jp) [![Build Status](https://travis-ci.org/morizyun/events_jp.svg)](https://travis-ci.org/morizyun/events_jp) [![Coverage Status](https://coveralls.io/repos/morizyun/events_jp/badge.png?branch=master)](https://coveralls.io/r/morizyun/events_jp?branch=master) [![Code Climate](https://codeclimate.com/github/morizyun/events_jp/badges/gpa.svg)](https://codeclimate.com/github/morizyun/events_jp)
+# events_jp [![Gem Version](https://badge.fury.io/rb/events_jp.svg)](http://badge.fury.io/rb/events_jp) [![Build Status](https://travis-ci.org/morizyun/events_jp.svg)](https://travis-ci.org/morizyun/events_jp) [![Code Climate](https://codeclimate.com/github/morizyun/events_jp/badges/gpa.svg)](https://codeclimate.com/github/morizyun/events_jp) [![Test Coverage](https://codeclimate.com/github/morizyun/events_jp/badges/coverage.svg)](https://codeclimate.com/github/morizyun/events_jp) [![Dependency Status](https://gemnasium.com/morizyun/events_jp.svg)](https://gemnasium.com/morizyun/events_jp)
 
 A Ruby wrapper for atnd/connpass/doorkeeper/zusaar API
 
