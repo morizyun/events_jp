@@ -1,8 +1,13 @@
 if ENV['CI']
   require 'coveralls'
   Coveralls.wear!
-  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[Coveralls::SimpleCov::Formatter]
+  require 'codeclimate-test-reporter'
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+    Coveralls::SimpleCov::Formatter,
+    CodeClimate::TestReporter::Formatter
+  ]
   SimpleCov.start 'test_frameworks'
+  CodeClimate::TestReporter.start
 end
 
 require 'events_jp'
