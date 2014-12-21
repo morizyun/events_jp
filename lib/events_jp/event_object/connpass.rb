@@ -5,15 +5,20 @@ module EventsJp
 
     class << self
       def get_events(keyword: nil, limit: nil)
-        res = []
+        results, errors = [], []
         loop do
-          opt = merged_option(keyword, res, DEFAULT_OPT)
-          tmp = convert_response(get(ENDPOINT, opt))
-          res += tmp
-          break if finish_get?(res, tmp, limit)
+          tmp, err = access_wrapper do
+            opt = merged_option(keyword, results, DEFAULT_OPT)
+            convert_response(get(ENDPOINT, opt))
+          end
+          results += tmp
+          errors << err
+          break if finish_get?(results, tmp, limit)
+
           sleep(1)
         end
-        res.uniq.flatten
+
+        return [results.uniq.compact.flatten, errors.compact.flatten]
       end
 
       def convert_response(json_str)

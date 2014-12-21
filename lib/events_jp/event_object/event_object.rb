@@ -4,6 +4,12 @@ module EventsJp
     extend EventsJp::Connection
 
     class << self
+      def access_wrapper(&block)
+        return [block.call, nil]
+      rescue => e
+        return [[], e.message]
+      end
+
       def service_name
         self.name.to_s.downcase.gsub(/^(.*::)/, '')
       end

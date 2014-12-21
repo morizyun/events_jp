@@ -4,26 +4,28 @@ require 'spec_helper'
 describe 'EventsJp::Event' do
   describe '.get_all' do
     context 'with keyword' do
-      before(:each) do
-        @result = EventsJp.get_events(keyword: 'Ruby',  service_limit: 10)
-      end
-
       it 'return each more than 10 events' do
-        expect(@result.count).to be > 40
-      end
-
-      it "doesn't have nil" do
-        expect(@result.any?{|e| e.nil? }).to be_falsy
+        results, errors = EventsJp.get_events(keyword: 'Ruby',  service_limit: 10)
+        expect(errors).to be == []
+        expect(results.count).to be > 40
+        expect(results.any?{|e| e.nil? }).to be_falsy
       end
     end
 
     context 'no keyword' do
-      before(:each) do
-        @result = EventsJp.get_events(service_limit: 10)
-      end
-
       it 'return each 100 events' do
-        expect(@result.count).to be > 40
+        results, errors = EventsJp.get_events(service_limit: 10)
+        expect(errors).to be == []
+        expect(results.count).to be > 40
+      end
+    end
+
+    context 'when raise errors in convert_response method' do
+      it 'returns error' do
+        allow(EventsJp::Atnd).to receive(:convert_response).and_raise(StandardError)
+        results, errors = EventsJp.get_events(service_limit: 10)
+        expect(errors).not_to be_empty
+        expect(results.count).to be > 40
       end
     end
   end

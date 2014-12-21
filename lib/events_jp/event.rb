@@ -4,14 +4,16 @@ module EventsJp
     SERVICES = [EventsJp::Atnd, EventsJp::Connpass, EventsJp::Doorkeeper, EventsJp::Zusaar]
 
     def get_events(keyword: nil, service_limit: nil)
-      results = []
+      results, errors = [], []
 
       Parallel.each(SERVICES, in_threads: SERVICES.count) do |service|
         next if service == EventsJp::Doorkeeper && keyword
-        results << service.get_events(keyword: keyword, limit: service_limit)
+        res, err = service.get_events(keyword: keyword, limit: service_limit)
+        results << res
+        errors << err
       end
 
-      results.compact.flatten
+      return [results.compact.flatten, errors.compact.flatten]
     end
   end
 end

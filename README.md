@@ -21,10 +21,11 @@ Or install it yourself as:
 ### Search events
 
 ```ruby
-events = EventsJp.get_events(keyword: 'Ruby')
+events, errors = EventsJp.get_events(keyword: 'Ruby')
 events.each do |e|
   puts "#{e.service} - #{e.title}"
 end
+puts errors #=> []
 ```
 
 * Unfortunately, Doorkeeper don't support keyword search....
@@ -32,10 +33,11 @@ end
 ### Get all events
 
 ```ruby
-events = EventsJp.get_events(service_limit: 100)
+events, errors = EventsJp.get_events(service_limit: 100)
 events.each do |e|
   puts "#{e.service} - #{e.title}"
 end
+puts errors #=> []
 ```
 
 ### Complement
