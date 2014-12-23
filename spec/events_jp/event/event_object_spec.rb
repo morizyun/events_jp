@@ -6,7 +6,8 @@ describe 'EventsJp::EventObject' do
     context 'achieve limit' do
       before(:each)  do
         response = %w(1 2)
-        @result = EventsJp::EventObject.finish_get?(response, response, 2)
+        has_response = true
+        @result = EventsJp::EventObject.finish_get?(response, has_response, 2)
       end
 
       it 'return true' do
@@ -17,7 +18,8 @@ describe 'EventsJp::EventObject' do
     context 'get no response' do
       before(:each)  do
         response = %w(1)
-        @result = EventsJp::EventObject.finish_get?(response, [], 2)
+        has_response = false
+        @result = EventsJp::EventObject.finish_get?(response, has_response, 2)
       end
 
       it 'return true' do
@@ -28,7 +30,8 @@ describe 'EventsJp::EventObject' do
     context 'not achieve limit' do
       before(:each)  do
         response = %w(1)
-        @result = EventsJp::EventObject.finish_get?(response, response, 2)
+        has_response = true
+        @result = EventsJp::EventObject.finish_get?(response, has_response, 2)
       end
 
       it 'return false' do

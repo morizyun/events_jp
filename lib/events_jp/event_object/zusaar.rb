@@ -3,27 +3,23 @@ module EventsJp
     ENDPOINT = 'http://www.zusaar.com/api/event/'.freeze
     DEFAULT_OPT = {count: 100}.freeze
 
-    class << self
-      def get_events(keyword: nil, limit: nil)
-        results, errors = [], []
-        loop do
-          tmp, err = access_wrapper do
-            opt = merged_option(keyword, results, DEFAULT_OPT)
-            convert_response(get(ENDPOINT, opt))
-          end
-          results += tmp
-          errors << err
-          break if finish_get?(results, tmp, limit)
-          sleep(1)
+    def self.get_events(keyword: nil, limit: nil)
+      results, errors = [], []
+      loop do
+        results, errors, has_response = access_wrapper(results, errors) do
+          opt = merged_option(keyword, results, DEFAULT_OPT)
+          convert_response(get(ENDPOINT, opt))
         end
-
-        return [results.uniq.compact.flatten, errors.compact.flatten]
+        break if finish_get?(results, has_response, limit)
+        sleep(1)
       end
 
-      def convert_response(json_str)
-        e = Hashie::Mash.new(JSON.parse(json_str)).event
-        e.map{ |_| to_basic_hash(_) }
-      end
+      return [results, errors]
+    end
+
+    def self.convert_response(json_str)
+      e = Hashie::Mash.new(JSON.parse(json_str)).event
+      e.map{ |_| to_basic_hash(_) }
     end
   end
 end
