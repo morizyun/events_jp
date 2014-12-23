@@ -28,13 +28,13 @@ end
 
 RSpec.configure do |config|
  config.before(:each) do
-   stub_get("#{EventsJp::Atnd::ENDPOINT}?format=json&count=100&start=1", 'event/atnd.json')
-   stub_get("#{EventsJp::Atnd::ENDPOINT}?format=json&count=100&start=1&keyword=Ruby", 'event/atnd_ruby.json')
-   stub_get("#{EventsJp::Connpass::ENDPOINT}?order=2&count=100&start=1", 'event/connpass.json')
-   stub_get("#{EventsJp::Connpass::ENDPOINT}?order=2&count=100&start=1&keyword=Ruby", 'event/connpass_ruby.json')
-   stub_get("#{EventsJp::Doorkeeper::ENDPOINT}?locale=ja&sort=starts_at&page=1", 'event/doorkeeper.json')
-   stub_get("#{EventsJp::Zusaar::ENDPOINT}?count=100&start=1", 'event/zusaar.json')
-   stub_get("#{EventsJp::Zusaar::ENDPOINT}?count=100&start=1&keyword=Ruby", 'event/zusaar_ruby.json')
-   stub_get("#{EventsJp::Zusaar::ENDPOINT}?count=100&start=1&keyword=Ruby", 'event/zusaar_ruby.json')
+   stub_get("#{EventsJp::Atnd.__send__(:endpoint)}?format=json&count=100&start=1", 'event/atnd.json')
+   stub_get("#{EventsJp::Atnd.__send__(:endpoint)}?format=json&count=100&start=1&keyword=Ruby", 'event/atnd_ruby.json')
+   stub_get("#{EventsJp::Connpass.__send__(:endpoint)}?order=2&count=100&start=1", 'event/connpass.json')
+   stub_get("#{EventsJp::Connpass.__send__(:endpoint)}?order=2&count=100&start=1&keyword=Ruby", 'event/connpass_ruby.json')
+   stub_get("#{EventsJp::Doorkeeper.__send__(:endpoint)}?locale=ja&sort=starts_at&page=1", 'event/doorkeeper.json')
+   stub_get("#{EventsJp::Zusaar.__send__(:endpoint)}?count=100&start=1", 'event/zusaar.json')
+   stub_get("#{EventsJp::Zusaar.__send__(:endpoint)}?count=100&start=1&keyword=Ruby", 'event/zusaar_ruby.json')
+   stub_get("#{EventsJp::Zusaar.__send__(:endpoint)}?count=100&start=1&keyword=Ruby", 'event/zusaar_ruby.json')
   end
 end

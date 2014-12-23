@@ -3,6 +3,22 @@ module EventsJp
     class ImplementationException < Exception; end
     extend EventsJp::Connection
 
+    def self.get_events(keyword: nil, limit: nil)
+      results, errors = [], []
+      loop do
+        results, errors, has_response = access_wrapper(results, errors) do
+          opt = merged_option(keyword, results, default_opt)
+          convert_response(get(endpoint, opt))
+        end
+        break if finish_get?(results, has_response, limit)
+        sleep(1)
+      end
+
+      return [results, errors]
+    end
+
+    private
+
     def self.access_wrapper(results, errors, &block)
       results << (tmp = block.call)
       has_response = (tmp.count >= 1)
@@ -47,6 +63,13 @@ module EventsJp
 
     def self.parse_datetime(dt)
       dt ? DateTime.parse(dt) : nil
+    end
+
+    # インターフェース
+    def self.endpoint
+    end
+
+    def self.default_opt
     end
   end
 end

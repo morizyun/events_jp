@@ -1,21 +1,20 @@
 module EventsJp
   class Doorkeeper < EventsJp::EventObject
-    ENDPOINT = 'http://api.doorkeeper.jp/events'.freeze
-    DEFAULT_OPT = {locale: 'ja', sort: 'starts_at'}.freeze
-
     def self.get_events(keyword: nil, limit: nil)
       results, errors = [], []
       1.upto(1000) do |page|
         results, errors, has_response = access_wrapper(results, errors) do
-          opt = merged_option(page, DEFAULT_OPT)
-          convert_response(get(ENDPOINT, opt))
+          opt = merged_option(page, default_opt)
+          convert_response(get(endpoint, opt))
         end
         break if finish_get?(results, has_response, limit)
         sleep(1)
       end
 
-      return [results.uniq.compact.flatten, errors.compact.flatten]
+      return [results, errors]
     end
+
+    private
 
     def self.merged_option(page, option)
       opt = option.dup
@@ -44,6 +43,14 @@ module EventsJp
                          limit:       h[:ticket_limit],
                          accepted:    h[:participants],
                          waiting:     h[:waitlisted] })
+    end
+
+    def self.endpoint
+      'http://api.doorkeeper.jp/events'
+    end
+
+    def self.default_opt
+      {locale: 'ja', sort: 'starts_at'}
     end
   end
 end
